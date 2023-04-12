@@ -1,4 +1,4 @@
-# JSONデータの読み込み
+# カテゴリ名を含む行を抽出
 
 import json
 import gzip
@@ -13,6 +13,13 @@ def read_wiki(fname, title):
 
 def main():
     fname = 'jawiki-country.json.gz'
-    print(read_wiki(fname, 'イギリス'))
+
+    data = read_wiki(fname, 'イギリス')
+
+    line = data.split('\n')
+
+    for i in range(len(line)):
+         if 'Category' in line[i]:
+              print(line[i])
 
 main()
